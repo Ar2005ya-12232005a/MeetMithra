@@ -1,0 +1,62 @@
+# ============================================================
+# MeetMithra — .gitignore
+# ============================================================
+
+# ── Secrets (NEVER commit) ───────────────────────────────────
+.env
+.env.local
+.env.*.local
+backend/.env
+backend/.env.*
+frontend/.env.local
+frontend/.env.*.local
+
+# ── Python ───────────────────────────────────────────────────
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+dist/
+build/
+.eggs/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+htmlcov/
+.coverage
+coverage.xml
+
+# ── Node / Next.js ───────────────────────────────────────────
+node_modules/
+.next/
+out/
+build/
+.turbo/
+*.tsbuildinfo
+.cache/
+
+# ── Audio / large binary eval files ─────────────────────────
+# (keep transcripts + expected.json — ignore raw audio)
+eval/meetings/*.mp3
+eval/meetings/*.wav
+eval/meetings/*.m4a
+eval/meetings/*.ogg
+eval/meetings/*.flac
+eval/results/*.json
+
+# ── Docker ───────────────────────────────────────────────────
+*.log
+docker-compose.override.yml
+
+# ── Editor & OS ──────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+desktop.ini
