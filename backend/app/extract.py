@@ -1,9 +1,8 @@
 from pathlib import Path
 
-from langchain_anthropic import ChatAnthropic
 from langchain_core.prompts import ChatPromptTemplate
 
-from .config import settings
+from .llm import get_llm
 from .schemas import Extraction
 
 PROMPTS = Path(__file__).parent / "prompts"
@@ -15,13 +14,8 @@ def format_transcript(segments: list[dict]) -> str:
 
 def build_extractor(version: str = "v1", model: str | None = None):
     rules = (PROMPTS / f"extraction_{version}.txt").read_text(encoding="utf-8")
-    llm = ChatAnthropic(
-        model=model or settings.extraction_model,
-        temperature=0,
-        api_key=settings.anthropic_api_key or None,
-    )
     prompt = ChatPromptTemplate.from_messages([("system", rules), ("human", "{transcript}")])
-    return prompt | llm.with_structured_output(Extraction)
+    return prompt | get_llm(model).with_structured_output(Extraction)
 
 
 def extract(segments: list[dict], version: str = "v1", model: str | None = None) -> Extraction:

@@ -2,6 +2,6 @@ fastapi[standard]
 pydantic-settings
 python-dotenv
 langchain
-langchain-anthropic
+langchain-groq
 rapidfuzz
 pytest
