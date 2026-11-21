@@ -16,9 +16,17 @@ frontend/.env.*.local
 frontend/.env.example
 
 # ── Python ───────────────────────────────────────────────────
+# Virtual environments (any name, anywhere in the repo)
 .venv/
 venv/
 env/
+.env/
+backend/.venv/
+backend/venv/
+backend/env/
+backend/.env/
+
+# Installed packages & build artifacts
 __pycache__/
 *.py[cod]
 *.pyo
@@ -33,6 +41,9 @@ build/
 htmlcov/
 .coverage
 coverage.xml
+site-packages/
+pip-wheel-metadata/
+*.dist-info/
 
 # ── Node / Next.js ───────────────────────────────────────────
 node_modules/
